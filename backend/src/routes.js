@@ -29,14 +29,14 @@ routes.post('/ongs', celebrate({
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(),
         email: Joi.string().required().email(),
-        whatsapp: Joi.number().required().min(10).max(11),
-        cidade: Joi.string().required(),
+        whatsapp: Joi.string().required().min(10).max(11),
+        city: Joi.string().required(),
         uf: Joi.string().required().length(2)
     }) //VALIDAÇÕES
 }), OngController.create);
 
 routes.get('/profile', celebrate({
-    [Segments.HEADERS]: Joi.object()({
+    [Segments.HEADERS]: Joi.object({
         authorization: Joi.string().required(),
     }).unknown(), //VALIDAÇÕES
 }), ProfileController.index);
